@@ -1,0 +1,25 @@
+{
+  "name": "tailjng",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@ng-icons/lucide": ">=29.0.0",
+    "lucide-angular": ">=0.477.0",
+    "tailwindcss": ">=4.0.9"
+  },
+  "bin": {
+    "tailjng": "./cli/tailjng.js"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.3",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss": "^4.0.9",
+    "tailwindcss-animate": "^1.0.6",
+    "@tailwindcss/postcss": "^4.0.9"
+  },
+  "sideEffects": false
+}

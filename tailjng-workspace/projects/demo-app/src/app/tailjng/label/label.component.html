@@ -1,0 +1,25 @@
+<label 
+  [for]="for"
+  [ngClass]="ngClass"
+  [class]="classes"
+  class="flex gap-1 items-center text-black dark:text-white"
+>
+  <ng-content></ng-content>
+
+  @if (isRequired || isConditioned || isAutomated) {
+    <div class="text-[8px]">
+      <span [ngClass]="{
+          'text-red-600 dark:text-red-300': isRequired,
+          'text-blue-600 dark:text-blue-300': !isRequired && isConditioned,
+          'text-purple-600 dark:text-purple-300': !isRequired && !isConditioned && isAutomated
+      }">✱</span>
+    </div>
+  }
+
+  @if (tooltip) {
+  <span [jTooltip]="tooltip" [jTooltipPosition]="tooltipPosition" >
+    <lucide-icon [name]="iconsService.icons.Info" [size]="15" />
+  </span>
+  }
+
+</label>
