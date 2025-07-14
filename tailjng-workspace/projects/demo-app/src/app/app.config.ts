@@ -1,8 +1,29 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+
 import { routes } from './app.routes';
+import { TAILJNG_CONFIG } from 'tailjng';
+import { CurrencyPipe } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+
+    provideRouter(routes),
+
+    {
+      provide: TAILJNG_CONFIG,
+      useValue: {
+        urlBase: 'https://crm-rest.dudu.com.ec',
+        socketUrl: 'https://crm-rest.dudu.com.ec/api/v1',
+      }
+    },
+
+    provideHttpClient(withInterceptors([])),
+    provideClientHydration(withEventReplay()),
+    CurrencyPipe,
+  ]
 };

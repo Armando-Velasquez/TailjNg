@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { JTooltipDirective } from '../tooltip/tooltip.directive';
-import { JIconsService } from '../../services/icons.service';
+import { JIconsService } from '../../services/static/icons.service';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({

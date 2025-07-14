@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Info } from 'lucide-angular';
+import { Info, Loader2 } from 'lucide-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class JIconsService {
 
   public icons = {
     Info,
-
+    Loader2,
   }
 
 

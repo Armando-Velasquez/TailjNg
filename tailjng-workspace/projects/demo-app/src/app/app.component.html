@@ -2,5 +2,17 @@
 
   <button jTooltip="hola" jTooltipPosition="bottom">Hover me</button>
   <JLabel [isAutomated]="true">Label Texto</JLabel>
+  <JButton classes="warning">Click Me</JButton>
+
+  <JToggleRadio
+      [options]="[
+        { id_role: 1, name_role: 'Admin' },
+        { id_role: 2, name_role: 'User' },
+        { id_role: 3, name_role: 'Guest' }
+      ]"
+      optionLabel="name_role"
+      optionValue="id_role"
+      [loadOnInit]="true"
+  />
 
 </section>

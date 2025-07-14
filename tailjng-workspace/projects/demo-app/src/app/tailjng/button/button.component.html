@@ -1,4 +1,4 @@
-/*
+<!--
 ===============================================
 Librería de Componentes y Funciones - tailjNg
 ===============================================
@@ -21,27 +21,40 @@ Licencia:
 Versión: 0.0.9
 Fecha de creación: 2025-01-04
 ===============================================
-*/
-import { JIconsService } from 'tailjng';
+-->
+<button
+  [attr.type]="type"
+  [jTooltip]="tooltip"
+  [jTooltipPosition]="tooltipPosition"
+  [disabled]="disabled || isLoading"
+  [ngClass]="computedClasses"
+  [class]="classes"
+  (click)="handleClick($event)"
+>
+  <div class="flex items-center justify-center gap-2">
 
-import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { JTooltipDirective } from '../tooltip/tooltip.directive';
-import { LucideAngularModule } from 'lucide-angular';
-@Component({
-  selector: 'JLabel',
-  imports: [NgClass, JTooltipDirective, LucideAngularModule],
-  templateUrl: './label.component.html',
-  styleUrl: './label.component.css'
-})
-export class JLabelComponent {
-  constructor(public iconsService: JIconsService) { }
-  @Input() tooltipPosition: 'top' | 'right' | 'bottom' | 'left' = 'top';
-  @Input() tooltip: string = '';
-  @Input() for: string = '';
-  @Input() classes: string = '';
-  @Input() ngClass: { [key: string]: boolean } = {};
-  @Input() isRequired: boolean = false;
-  @Input() isConditioned: boolean = false;
-  @Input() isAutomated: boolean = false;
-}
+    @if (isLoading) {
+      <div [ngClass]="{ 'pt-1 pb-1': icon }">
+        <lucide-icon [name]="iconsService.icons.Loader2" [size]="iconSize || 15" class="animate-spin" />
+      </div>
+    }
+
+    @if (!isLoading && icon) {
+      <div class="pt-1 pb-1">
+
+        @if (!isChangeIcon) {
+          <lucide-icon [name]="icon" [size]="iconSize" />
+        } @else {
+          <lucide-icon [name]="iconChange" [size]="iconSize" />
+        }
+        
+      </div>
+    }
+
+    @if (!isLoading && text) {
+      <span>{{ text }}</span>
+    }
+
+    <ng-content></ng-content>
+  </div>
+</button>

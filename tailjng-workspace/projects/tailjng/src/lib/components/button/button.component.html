@@ -1,0 +1,36 @@
+<button
+  [attr.type]="type"
+  [jTooltip]="tooltip"
+  [jTooltipPosition]="tooltipPosition"
+  [disabled]="disabled || isLoading"
+  [ngClass]="computedClasses"
+  [class]="classes"
+  (click)="handleClick($event)"
+>
+  <div class="flex items-center justify-center gap-2">
+
+    @if (isLoading) {
+      <div [ngClass]="{ 'pt-1 pb-1': icon }">
+        <lucide-icon [name]="iconsService.icons.Loader2" [size]="iconSize || 15" class="animate-spin" />
+      </div>
+    }
+
+    @if (!isLoading && icon) {
+      <div class="pt-1 pb-1">
+
+        @if (!isChangeIcon) {
+          <lucide-icon [name]="icon" [size]="iconSize" />
+        } @else {
+          <lucide-icon [name]="iconChange" [size]="iconSize" />
+        }
+        
+      </div>
+    }
+
+    @if (!isLoading && text) {
+      <span>{{ text }}</span>
+    }
+
+    <ng-content></ng-content>
+  </div>
+</button>
