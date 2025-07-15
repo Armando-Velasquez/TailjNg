@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Info, Loader2 } from 'lucide-angular';
+import { CircleCheck, CircleHelp, CircleX, Info, Loader2, TriangleAlert } from 'lucide-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +7,12 @@ import { Info, Loader2 } from 'lucide-angular';
 export class JIconsService {
 
   public icons = {
-    Info,
-    Loader2,
+    info: Info,
+    success: CircleCheck,
+    error: CircleX,
+    warning: TriangleAlert,
+    question: CircleHelp,
+    loading: Loader2,
   }
 
 

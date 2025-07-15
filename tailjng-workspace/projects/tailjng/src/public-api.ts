@@ -26,7 +26,8 @@ export * from './lib/services/transformer/calendar.service';
 // Static
 export * from './lib/services/static/icons.service';
 
-
+// Alert
+export * from './lib/services/alert/dialog-alert.service';
 
 
 // npm version patch
