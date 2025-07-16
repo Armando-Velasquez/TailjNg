@@ -8,8 +8,7 @@ async function installDependencies(dependencies = [], componentList, installedCo
     }
 
     for (const dep of dependencies) {
-
-        // Evit infinite loops by checking if the component was already processed
+        // Avoid infinite loops by checking if the component was already processed
         if (installedComponents.has(dep)) {
             console.log(`${COLORS.dim}[tailjng CLI] Component "${dep}" already processed, skipping.${COLORS.reset}`)
             continue

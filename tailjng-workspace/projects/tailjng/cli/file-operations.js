@@ -3,12 +3,11 @@ const path = require("path")
 const { COLORS } = require("./settings/colors")
 const { generateHeaderComment } = require("./settings/header-generator")
 const { askOverwrite } = require("./settings/prompt-utils")
+const { buildTargetPath, parseComponentPath } = require("./settings/path-utils")
 
 async function copyComponentFiles(componentName, componentPath, isDependency = false) {
-
     // Detect the root directory where node_modules is located
     let currentDir = process.cwd()
-
     // Up to the root directory where node_modules is located
     while (!fs.existsSync(path.join(currentDir, "node_modules"))) {
         currentDir = path.dirname(currentDir)
@@ -21,7 +20,10 @@ async function copyComponentFiles(componentName, componentPath, isDependency = f
     // Now currentDir points to the root directory where node_modules is located
     const nodeModulesPath = path.join(currentDir, "node_modules", "tailjng", componentPath)
     const projectRoot = process.cwd()
-    const targetPath = path.join(projectRoot, "src", "app", "tailjng", componentName)
+
+    // Use the new function to build the target path while maintaining the folder structure
+    const targetPath = buildTargetPath(projectRoot, componentName, componentPath)
+    const pathInfo = parseComponentPath(componentPath)
 
     // Check if the component exists in the correct path
     if (!fs.existsSync(nodeModulesPath)) {
@@ -33,7 +35,8 @@ async function copyComponentFiles(componentName, componentPath, isDependency = f
 
     // Check if the target path already exists
     if (fs.existsSync(targetPath)) {
-        const shouldOverwrite = await askOverwrite(componentName, path.relative(projectRoot, targetPath), isDependency)
+        const relativeTargetPath = path.relative(projectRoot, targetPath)
+        const shouldOverwrite = await askOverwrite(componentName, relativeTargetPath, isDependency)
 
         if (!shouldOverwrite) {
             console.log(`${COLORS.dim}[tailjng CLI] Skipping "${componentName}" - keeping existing version.${COLORS.reset}`)
@@ -46,9 +49,20 @@ async function copyComponentFiles(componentName, componentPath, isDependency = f
     }
 
     const componentType = isDependency ? "dependency component" : "component"
-    console.log(
-        `${COLORS.blue}[tailjng CLI] Copying ${componentType} "${componentName}" → ${path.relative(projectRoot, targetPath)}${COLORS.reset}`,
-    )
+    const relativeTargetPath = path.relative(projectRoot, targetPath)
+
+    // See if the component has subfolders
+    if (pathInfo.hasSubfolders) {
+        console.log(
+            `${COLORS.blue}[tailjng CLI] Copying ${componentType} "${componentName}" (${pathInfo.fullSubPath}) → ${relativeTargetPath}${COLORS.reset}`,
+        )
+    } else {
+        console.log(
+            `${COLORS.blue}[tailjng CLI] Copying ${componentType} "${componentName}" → ${relativeTargetPath}${COLORS.reset}`,
+        )
+    }
+
+    // Create the target directory structure
     fs.mkdirSync(targetPath, { recursive: true })
 
     const files = fs.readdirSync(nodeModulesPath)

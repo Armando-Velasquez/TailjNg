@@ -20,6 +20,10 @@ function getComponentList() {
             path: "src/lib/components/button",
             dependencies: ["tooltip", "color"],
         },
+        'alert-dialog': {
+            path: "src/lib/components/alert/dialog-alert",
+            dependencies: ["button", "color"],
+        },
         // Add more components as needed
     }
 }
