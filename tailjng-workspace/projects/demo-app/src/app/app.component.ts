@@ -11,16 +11,19 @@ import { JInputCheckboxComponent } from './tailjng/checkbox/input-checkbox/input
 import { JSwitchCheckboxComponent } from './tailjng/checkbox/switch-checkbox/switch-checkbox.component';
 import { JProgressBarComponent } from './tailjng/progress-bar/progress-bar.component';
 import { JViewerImageComponent } from './tailjng/image/viewer-image/viewer-image.component';
+import { JDialogComponent } from './tailjng/dialog/dialog.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, JTooltipDirective, JLabelComponent, JButtonComponent, JToggleRadioComponent, JAlertDialogComponent, JAlertToastComponent, JInputCheckboxComponent, JSwitchCheckboxComponent, JProgressBarComponent, JViewerImageComponent],
+  imports: [RouterOutlet, JTooltipDirective, JLabelComponent, JButtonComponent, JToggleRadioComponent, JAlertDialogComponent, JAlertToastComponent, JInputCheckboxComponent, JSwitchCheckboxComponent, JProgressBarComponent, JViewerImageComponent, JDialogComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  
   title = 'demo-app';
 
+  dialogOpen = false;
 
   constructor(
     private readonly alertDialogService: JAlertDialogService,

@@ -1,0 +1,57 @@
+@if (openModal) {
+    <!-- Overlay -->
+    @if (overlay) {
+      <div class="fixed inset-0 z-[999] bg-black/50"></div>
+    }
+  
+    <!-- Modal -->
+    <div class="fixed inset-0 z-[1000] flex pointer-events-none" [ngClass]="getPositionClass()">
+  
+      <div @modalTransition
+           class="pointer-events-auto bg-white dark:bg-foreground rounded-[12px] shadow-lg border-2 border-border dark:border-dark-border"
+           [ngStyle]="getOffsetStyles()"
+           data-draggable-dialog>
+  
+        <!-- Header draggable -->
+        @if (draggable) {
+          <div class="flex p-1 pl-4 pr-4 justify-between items-center bg-primary dark:bg-dark-primary border-b border-border dark:border-dark-border  rounded-[10px] font-semibold text-2sm cursor-move select-none"
+               (mousedown)="$event.stopPropagation(); startDrag($event)">
+            <h3 class="text-[1em] font-semibold text-white leading-none">{{ title }}</h3>
+
+            <button type="button" (click)="$event.stopPropagation(); onClose()"
+                    class="p-2 rounded-full border border-border dark:border-dark-border text-white hover:bg-dark-background focus:outline-none cursor-pointer">
+              <lucide-icon [name]="iconsService.icons.close" size="16"></lucide-icon>
+            </button>
+
+          </div>
+        }
+  
+        <!-- Header normal -->
+        @if (!draggable) {
+          <div class="flex p-1 pl-4 pr-4 justify-between items-center bg-primary dark:bg-dark-primary border-b border-border dark:border-dark-border  rounded-[10px] font-semibold text-2sm cursor-normal select-none">
+            <h3 class="text-[1em] font-semibold text-white leading-none">{{ title }}</h3>
+            <button type="button" (click)="onClose()"
+                    class="p-2 rounded-full border border-border dark:border-dark-border text-white hover:bg-dark-background focus:outline-none cursor-pointer">
+              <lucide-icon [name]="iconsService.icons.close" size="16"></lucide-icon>
+            </button>
+          </div>
+        }
+
+        <!-- Content -->
+        <div class="m-2"
+             [ngClass]="{ 'jdialog-full': isFullScreen() }"
+             [ngStyle]="{
+                width: getModalWidth(),
+                height: getModalHeight(),
+                'min-width': !isFullScreen() ? '200px' : null,
+                'min-height': !isFullScreen() ? '40px' : null
+             }">
+          @if (dialogTemplate) {
+            <ng-container [ngTemplateOutlet]="dialogTemplate"></ng-container>
+          }
+        </div>
+  
+      </div>
+    </div>
+  }
+  

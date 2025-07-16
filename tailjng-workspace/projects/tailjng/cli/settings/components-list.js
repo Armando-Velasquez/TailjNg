@@ -44,6 +44,10 @@ function getComponentList() {
             path: "src/lib/components/image/viewer-image",
             dependencies: ["button"],
         },
+        dialog: {
+            path: "src/lib/components/dialog",
+            dependencies: [],
+        },
         // Add more components as needed
     }
 }
