@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { JGenericCrudService } from '../../services/crud/generic-crud.service';
 import { LucideAngularModule } from 'lucide-angular';
-import { JIconsService } from 'tailjng';
+import { JIconsService, JGenericCrudService } from 'tailjng';
 
 @Component({
   selector: 'JToggleRadio',

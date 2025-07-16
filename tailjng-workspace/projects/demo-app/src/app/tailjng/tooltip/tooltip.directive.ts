@@ -1,27 +1,33 @@
 /*
 ===============================================
-Librería de Componentes y Funciones - tailjNg
+Component and Function Library - tailjNg
 ===============================================
-Descripción:
-  Esta librería está diseñada para ofrecer un conjunto de componentes reutilizables y funciones
-  optimizadas para facilitar el desarrollo de interfaces de usuario y la gestión de datos en aplicaciones 
-  web. Incluye herramientas para mejorar la experiencia del desarrollador y la interacción con el usuario.
-Propósito:
-  - Crear componentes modulares y personalizables.
-  - Mejorar la eficiencia del desarrollo front-end mediante herramientas reutilizables.
-  - Proporcionar soluciones escalables y fáciles de integrar con aplicaciones existentes.
-Uso:
-  Para obtener la funcionalidad completa, simplemente importa los módulos necesarios y usa los 
-  componentes según tu caso de uso. Asegúrate de revisar la documentación oficial para obtener ejemplos 
-  detallados sobre su implementación y personalización.
-Autores:
-  Armando Josue Velasquez Delgado - Desarrollador principal
-Licencia:
-  Este proyecto está licenciado bajo la BSD 3-Clause - ver el archivo LICENSE para más detalles.
-Versión: 0.0.9
-Fecha de creación: 2025-01-04
+Description:
+  This library is designed to provide a set of reusable components and optimized functions
+  to facilitate the development of user interfaces and data management in web applications.
+  It includes tools to improve the developer experience and user interaction.
+
+Purpose:
+  - Create modular and customizable components.
+  - Improve front-end development efficiency through reusable tools.
+  - Provide scalable solutions that are easy to integrate with existing applications.
+
+Usage:
+  To access full functionality, simply import the necessary modules and use the
+  components according to your use case. Be sure to review the official documentation for detailed examples 
+  on implementation and customization.
+
+Authors:
+  Armando Josue Velasquez Delgado - Lead Developer
+
+License:
+  This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
+
+Version: 0.0.9
+Creation Date: 2025-01-04
 ===============================================
 */
+
 import { Directive, ElementRef, Input, OnDestroy, HostListener, NgZone, TemplateRef, ViewContainerRef, } from "@angular/core"
 import { JTooltipService } from "./tooltip.service"
 

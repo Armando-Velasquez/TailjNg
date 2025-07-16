@@ -29,6 +29,7 @@
     "rxjs": "~7.8.0",
     "tailjng": "file:dist/tailjng",
     "tailwindcss": "^4.1.11",
+    "tooltip": "^1.6.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

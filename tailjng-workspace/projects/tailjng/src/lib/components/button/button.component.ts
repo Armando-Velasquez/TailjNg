@@ -1,9 +1,9 @@
 import { NgClass } from "@angular/common"
 import { Component, Input, Output, EventEmitter } from "@angular/core"
 import { LucideAngularModule } from "lucide-angular"
-import { JTooltipDirective } from "../tooltip/tooltip.directive"
+import { JIconsService } from "tailjng";
 import { JColorsService } from '../color/colors.service';
-import { JIconsService } from "../../services/static/icons.service";
+import { JTooltipDirective } from "../tooltip/tooltip.directive"
 
 @Component({
   selector: 'JButton',

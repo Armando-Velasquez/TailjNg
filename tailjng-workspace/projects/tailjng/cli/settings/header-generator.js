@@ -1,5 +1,7 @@
-<!--
-===============================================
+const path = require("path")
+
+function generateHeaderComment(fileName) {
+  const headerContent = `===============================================
 Component and Function Library - tailjNg
 ===============================================
 Description:
@@ -25,31 +27,16 @@ License:
 
 Version: 0.0.9
 Creation Date: 2025-01-04
-===============================================
--->
+===============================================`
 
-<label 
-  [for]="for"
-  [ngClass]="ngClass"
-  [class]="classes"
-  class="flex gap-1 items-center text-black dark:text-white"
->
-  <ng-content></ng-content>
-
-  @if (isRequired || isConditioned || isAutomated) {
-    <div class="text-[8px]">
-      <span [ngClass]="{
-          'text-red-600 dark:text-red-300': isRequired,
-          'text-blue-600 dark:text-blue-300': !isRequired && isConditioned,
-          'text-purple-600 dark:text-purple-300': !isRequired && !isConditioned && isAutomated
-      }">✱</span>
-    </div>
+  const ext = path.extname(fileName).toLowerCase()
+  if (ext === ".ts" || ext === ".js" || ext === ".css" || ext === ".scss") {
+    return `/*\n${headerContent}\n*/`
+  } else if (ext === ".html") {
+    return `<!--\n${headerContent}\n-->`
+  } else {
+    return `/*\n${headerContent}\n*/`
   }
+}
 
-  @if (tooltip) {
-  <span [jTooltip]="tooltip" [jTooltipPosition]="tooltipPosition" >
-    <lucide-icon [name]="iconsService.icons.info" [size]="15" />
-  </span>
-  }
-
-</label>
+module.exports = { generateHeaderComment }
