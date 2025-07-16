@@ -40,6 +40,10 @@ function getComponentList() {
             path: "src/lib/components/progress-bar",
             dependencies: [],
         },
+        'viewer-image': {
+            path: "src/lib/components/image/viewer-image",
+            dependencies: ["button"],
+        },
         // Add more components as needed
     }
 }

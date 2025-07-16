@@ -1,0 +1,75 @@
+<div class="relative w-full h-full" #container>
+
+    <!-- Control buttons -->
+    <div class="absolute flex gap-1 z-2" [ngClass]="{ 'top-3 right-3': isFullscreen, 'top-0 right-0': !isFullscreen }">
+      <JButton (clicked)="rotateLeftImg()" classes="secondary w-[35px] h-[35px]">
+        <lucide-icon [name]="iconsService.icons.rotateLeft" size="20" />
+      </JButton>
+
+      <JButton (clicked)="rotateRightImg()" classes="secondary w-[35px] h-[35px]">
+        <lucide-icon [name]="iconsService.icons.rotateRight" size="20" />
+      </JButton>
+
+      <JButton (clicked)="toggleFullscreen(container)" classes="secondary w-[35px] h-[35px]">
+        @if (isFullscreen) {
+          <lucide-icon [name]="iconsService.icons.exitFullscreen" size="20" />
+        } @else {
+          <lucide-icon [name]="iconsService.icons.fullscreen" size="20" />
+        }
+      </JButton>
+    </div>
+
+    <div class="absolute flex gap-1 z-2" [ngClass]="{ 'top-13 right-3': isFullscreen, 'top-10 right-0': !isFullscreen }">
+      <JButton (clicked)="reset()" classes="secondary w-[35px] h-[35px]">
+        <lucide-icon [name]="iconsService.icons.reset" size="20" />
+      </JButton>
+      
+      <JButton [disabled]="zoom === 3" (clicked)="zoomIn()" classes="secondary w-[35px] h-[35px]">
+        <lucide-icon [name]="iconsService.icons.zoomIn" size="20" />
+      </JButton>
+    </div>
+
+    <div class="absolute flex gap-1 z-2" [ngClass]="{ 'top-23 right-3': isFullscreen, 'top-20 right-0': !isFullscreen }">
+      <JButton [disabled]="zoom === 0.5" (clicked)="zoomOut()" classes="secondary w-[35px] h-[35px]">
+        <lucide-icon [name]="iconsService.icons.zoomOut" size="20" />
+      </JButton>
+    </div>
+  
+    <!-- Container image -->
+    <div class="flex justify-center items-center w-full h-full select-none" [class.fullscreen]="isFullscreen">
+      <div class="relative w-full h-full overflow-hidden">
+        @if (!hasError) {
+          <img
+            [src]="src"
+            [alt]="alt"
+            (load)="handleLoad()"
+            (error)="handleError()"
+            (mousedown)="startDrag($event)"
+            [style.transform]="'scale(' + zoom + ') rotate(' + rotate + 'deg) translate(' + posX + 'px,' + posY + 'px)'"
+            [style.objectFit]="objectFit"
+            [style.cursor]="zoom > 1 ? 'grab' : 'default'"
+            [class.invisible]="loading"
+            [class.transition-transform]="animateTransform"
+            [class.duration-200]="animateTransform"
+            [class.ease-in-out]="animateTransform"
+            class="w-full h-full object-contain pointer-events-auto select-none"
+          />
+        }
+  
+        @if (loading && !hasError) {
+          <div class="absolute flex flex-col gap-3 inset-0 items-center justify-center bg-white/70 dark:bg-black/40">
+            <lucide-icon [name]="iconsService.icons.loading" size="30" class="text-primary animate-spin"></lucide-icon>
+            <span class="text-sm text-gray-500">Cargando imagen...</span>
+          </div>
+        }
+
+        @if (hasError) {
+          <div class="absolute flex flex-col gap-3 inset-0 items-center justify-center">
+            <lucide-icon [name]="iconsService.icons.imageOff" size="70" class="text-red-500" />
+            <span class="text-sm text-red-500">No se pudo cargar la imagen</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+  
