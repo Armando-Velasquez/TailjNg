@@ -1,0 +1,53 @@
+<!--
+===============================================
+Component and Function Library - tailjNg
+===============================================
+Description:
+  This library is designed to provide a set of reusable components and optimized functions
+  to facilitate the development of user interfaces and data management in web applications.
+  It includes tools to improve the developer experience and user interaction.
+
+Purpose:
+  - Create modular and customizable components.
+  - Improve front-end development efficiency through reusable tools.
+  - Provide scalable solutions that are easy to integrate with existing applications.
+
+Usage:
+  To access full functionality, simply import the necessary modules and use the
+  components according to your use case. Be sure to review the official documentation for detailed examples 
+  on implementation and customization.
+
+Authors:
+  Armando Josue Velasquez Delgado - Lead Developer
+
+License:
+  This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
+
+Version: 0.0.9
+Creation Date: 2025-01-04
+===============================================
+-->
+
+<div class="flex flex-col items-center justify-center gap-2">
+    @if (title) {
+        <span class="text-[8px] opacity-80">{{title}}</span>
+    }
+
+    <label class="relative inline-flex items-center justify-center">
+        <input 
+            type="checkbox" 
+            class="absolute opacity-0 cursor-pointer peer" 
+            [checked]="getValue(item, column)"
+            (change)="onCheckboxChange(item, column)" 
+            [disabled]="disabled"
+        >
+        <span
+            class="inline-flex items-center justify-center w-[25px] h-[25px] bg-white border border-primary dark:border-dark-border rounded transition-all duration-200 ease-in-out relative peer  peer-checked:bg-primary peer-checked:border-primary dark:peer-checked:bg-dark-primary dark:peer-checked:border-dark-primary"
+            [class]="classes"
+            [ngClass]="{'opacity-50' : disabled, 'cursor-not-allowed': disabled, 'cursor-pointer': !disabled}"
+        >
+            <lucide-icon [name]="icon" [size]="iconSize" class="text-white"></lucide-icon>
+        </span>
+    </label>
+    
+</div>

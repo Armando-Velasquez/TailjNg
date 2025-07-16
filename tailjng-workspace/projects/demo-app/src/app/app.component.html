@@ -1,4 +1,4 @@
-<section class="">
+<section class="grid gap-2 px-50">
 
   <button jTooltip="hola" jTooltipPosition="bottom">Hover me</button>
   <JLabel [isAutomated]="true">Label Texto</JLabel>
@@ -14,6 +14,17 @@
       optionLabel="name_role"
       optionValue="id_role"
       [loadOnInit]="true"
+  />
+
+  <JInputCheckbox onKeyPress
+    (click)="togglePasswordVisibility($event)" 
+  />
+
+  />
+
+  <JSwitchCheckbox onKeyPress
+    [isChecked]="isCheck"
+    (click)="togglePasswordVisibility($event)" 
   />
 
 </section>

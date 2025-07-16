@@ -20,6 +20,14 @@ function getComponentList() {
             path: "src/lib/components/button",
             dependencies: ["tooltip", "color"],
         },
+        'input-checkbox': {
+            path: "src/lib/components/checkbox/input-checkbox",
+            dependencies: ["color"],
+        },
+        'switch-checkbox': {
+            path: "src/lib/components/checkbox/switch-checkbox",
+            dependencies: ["color"],
+        },
         'alert-dialog': {
             path: "src/lib/components/alert/dialog-alert",
             dependencies: ["button", "color"],

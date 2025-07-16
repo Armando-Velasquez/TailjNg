@@ -1,0 +1,26 @@
+<div class="flex flex-col items-center justify-center gap-2">
+    @if (title) {
+        <span class="text-[8px] opacity-80">{{title}}</span>
+    }
+
+    @if (!isLoading) {
+        <div onKeyPress 
+            class="relative inline-block min-w-[40px] w-[40px] h-[20px] cursor-pointer" 
+            (click)="toggleSwitch(isChecked)"
+        >
+            <!-- Slider background -->
+            <div class="absolute inset-0 rounded-full transition-all duration-300"
+                 [ngClass]="isChecked ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-500'">
+            </div>
+
+            <!-- Circle -->
+            <div 
+                class="absolute top-[2px] left-[2px] bg-white rounded-full w-[16px] h-[16px] shadow-md transition-all duration-300"
+                [class]="classes" 
+                [ngStyle]="{'transform': isChecked ? 'translateX(20px)' : 'translateX(0)'}">
+            </div>
+        </div>
+    } @else {
+        <lucide-icon [name]="iconsService.icons.loading" size="20" class="min-w-[40px] w-[40px] text-dark-primary dark:text-white animate-spin"></lucide-icon>
+    }
+</div>

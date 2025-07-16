@@ -28,11 +28,11 @@ Creation Date: 2025-01-04
 ===============================================
 */
 
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { LucideAngularModule } from 'lucide-angular';
 import { JIconsService, JGenericCrudService } from 'tailjng';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'JToggleRadio',
