@@ -24,6 +24,10 @@ function getComponentList() {
             path: "src/lib/components/alert/dialog-alert",
             dependencies: ["button", "color"],
         },
+        'alert-toast': {
+            path: "src/lib/components/alert/toast-alert",
+            dependencies: ["button", "color"],
+        },
         // Add more components as needed
     }
 }

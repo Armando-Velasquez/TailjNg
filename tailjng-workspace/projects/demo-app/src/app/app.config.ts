@@ -3,6 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 import { TAILJNG_CONFIG } from 'tailjng';
@@ -24,6 +25,9 @@ export const appConfig: ApplicationConfig = {
 
     provideHttpClient(withInterceptors([])),
     provideClientHydration(withEventReplay()),
+
+    provideAnimations(),
+    
     CurrencyPipe,
   ]
 };

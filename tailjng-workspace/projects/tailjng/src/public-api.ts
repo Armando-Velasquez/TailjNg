@@ -28,6 +28,7 @@ export * from './lib/services/static/icons.service';
 
 // Alert
 export * from './lib/services/alert/dialog-alert.service';
+export * from './lib/services/alert/toast-alert.service';
 
 
 // npm version patch

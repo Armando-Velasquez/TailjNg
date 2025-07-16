@@ -2,7 +2,8 @@
 
   <button jTooltip="hola" jTooltipPosition="bottom">Hover me</button>
   <JLabel [isAutomated]="true">Label Texto</JLabel>
-  <JButton classes="warning">Click Me</JButton>
+  <JButton classes="warning" (clicked)="onShowAlert()">Click Me</JButton>
+  <JButton classes="info" (clicked)="onShowToast()">Click Me</JButton>
 
   <JToggleRadio
       [options]="[
@@ -16,3 +17,6 @@
   />
 
 </section>
+
+<JAlertDialog />
+<JAlertToast />
