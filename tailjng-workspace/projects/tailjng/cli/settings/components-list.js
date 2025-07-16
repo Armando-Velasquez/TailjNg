@@ -36,6 +36,10 @@ function getComponentList() {
             path: "src/lib/components/alert/toast-alert",
             dependencies: ["button", "color"],
         },
+        'progress-bar': {
+            path: "src/lib/components/progress-bar",
+            dependencies: [],
+        },
         // Add more components as needed
     }
 }

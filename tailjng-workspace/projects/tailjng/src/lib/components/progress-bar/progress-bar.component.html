@@ -1,0 +1,22 @@
+<div class="relative w-full flex items-center mb-2">
+    <progress
+        class="relative w-full overflow-hidden bg-slate-200 border border-border dark:border-dark-border
+            [&::-webkit-progress-bar]:bg-background
+            dark:[&::-webkit-progress-bar]:bg-dark-background
+            [&::-webkit-progress-value]:bg-primary
+            [&::-moz-progress-bar]:bg-primary
+            dark:[&::-webkit-progress-value]:bg-dark-primary
+            dark:[&::-moz-progress-bar]:bg-dark-primary
+            [&:disabled]:opacity-50 transition-all duration-300 ease-in-out"
+        [value]="value"
+        [max]="max"
+        [ngClass]="ngClasses"
+        [style.height.px]="height"
+        [style.border-radius.px]="borderRadius"
+    >
+    </progress>
+
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 dark:text-gray-400">
+        {{ value }}{{ simbol }}
+    </div>
+</div>

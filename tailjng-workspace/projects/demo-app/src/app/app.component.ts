@@ -9,10 +9,11 @@ import { JAlertDialogComponent } from './tailjng/alert/alert-dialog/dialog-alert
 import { JAlertToastComponent } from './tailjng/alert/alert-toast/toast-alert.component';
 import { JInputCheckboxComponent } from './tailjng/checkbox/input-checkbox/input-checkbox.component';
 import { JSwitchCheckboxComponent } from './tailjng/checkbox/switch-checkbox/switch-checkbox.component';
+import { JProgressBarComponent } from './tailjng/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, JTooltipDirective, JLabelComponent, JButtonComponent, JToggleRadioComponent, JAlertDialogComponent, JAlertToastComponent, JInputCheckboxComponent, JSwitchCheckboxComponent],
+  imports: [RouterOutlet, JTooltipDirective, JLabelComponent, JButtonComponent, JToggleRadioComponent, JAlertDialogComponent, JAlertToastComponent, JInputCheckboxComponent, JSwitchCheckboxComponent, JProgressBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

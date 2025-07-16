@@ -20,11 +20,18 @@
     (click)="togglePasswordVisibility($event)" 
   />
 
-  />
-
   <JSwitchCheckbox onKeyPress
     [isChecked]="isCheck"
     (click)="togglePasswordVisibility($event)" 
+  />
+
+  <JProgressBar 
+    [value]="10" 
+    [max]="100" 
+    [height]="20" 
+    [borderRadius]="10" 
+    [ngClasses]="['bg-blue-500', 'text-white']" 
+    simbol="%" 
   />
 
 </section>
