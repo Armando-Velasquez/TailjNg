@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-html, body {
+html,
+body {
   font-family: 'Arial', sans-serif;
   width: 100%;
   min-height: 100%;

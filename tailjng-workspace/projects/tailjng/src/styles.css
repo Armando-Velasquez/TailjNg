@@ -1,113 +1,126 @@
-.input:-webkit-autofill {
-    -webkit-text-fill-color: black !important;
-    -webkit-box-shadow: 0 0 0px 1000px color-mix(in srgb, var(--color-primary) 15%, white) inset !important;
-    caret-color: var(--color-primary) !important;
-}
+/* Scrolls */
 
-.input:-webkit-autofill:hover,
-.input:-webkit-autofill:focus,
-.input:-webkit-autofill:active {
-    -webkit-text-fill-color: black !important;
-    -webkit-box-shadow: 0 0 0px 1000px color-mix(in srgb, var(--color-primary) 15%, white) inset !important;
-    caret-color: var(--color-primary) !important;
-}
-
-.dark .input:-webkit-autofill {
-    -webkit-text-fill-color: white !important;
-    -webkit-box-shadow: 0 0 0px 1000px color-mix(in srgb, var(--color-background) 15%, black) inset !important;
-    caret-color: var(--color-dark-primary) !important;
-}
-
-.dark .input:-webkit-autofill:hover,
-.dark .input:-webkit-autofill:focus,
-.dark .input:-webkit-autofill:active {
-    -webkit-text-fill-color: white !important;
-    -webkit-box-shadow: 0 0 0px 1000px color-mix(in srgb, var(--color-background) 15%, black) inset !important;
-    caret-color: var(--color-primary) !important;
-}
-
-.input[type="date"]::-webkit-calendar-picker-indicator,
-.input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-    filter: none !important;
-    opacity: 1 !important;
-    color: black !important;
-    background-color: transparent !important;
-    -webkit-filter: brightness(0) invert(0) !important;
-}
-
-.dark .input[type="date"]::-webkit-calendar-picker-indicator,
-.dark .input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-    filter: none !important;
-    opacity: 1 !important;
-    color: white !important;
-    background-color: transparent !important;
-    -webkit-filter: brightness(0) invert(1) !important;
-}
-
-
-
-
-/* Scroll of elements */
 .scroll-element {
-  padding-right: 5px;
+  padding-right: 5px
 }
 
 .scroll-element::-webkit-scrollbar {
   width: 5px;
-  height: 5px;
+  height: 5px
 }
 
 .scroll-element::-webkit-scrollbar-track {
-  border-radius: 10px;
+  border-radius: 10px
 }
 
 .scroll-element::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: var(--color-primary);
-  transition: 0.5s;
+  -webkit-transition: .5s;
+  transition: .5s
 }
 
 .scroll-element::-webkit-scrollbar-thumb:hover {
-  background: var(--color-dark-primary);
+  background: var(--color-dark-primary)
 }
 
 .scroll-element::-webkit-scrollbar-button {
   width: 0px;
-  height: 0px;
+  height: 0px
 }
 
-/* Scroll of screens */
 .scroll-screen {
-  padding-right: 5px;
+  padding-right: 5px
 }
 
 .scroll-screen::-webkit-scrollbar {
   width: 10px;
-  height: 10px;
+  height: 10px
 }
 
 .scroll-screen::-webkit-scrollbar-thumb {
   background: var(--color-dark-primary);
   border: 3px solid var(--color-primary);
-  transition: 0.5s;
+  -webkit-transition: .5s;
+  transition: .5s
 }
 
 .scroll-screen::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: var(--color-primary)
 }
 
 .scroll-screen::-webkit-scrollbar-button {
   width: 0px;
-  height: 0px;
+  height: 0px
 }
 
-/* Scroll in dark mode */
 .dark .scroll-screen::-webkit-scrollbar-thumb {
   background: var(--color-dark-primary);
   border: 3px solid var(--color-primary);
-  transition: 0.5s;
+  -webkit-transition: .5s;
+  transition: .5s
 }
 
 .dark .scroll-screen::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: var(--color-primary)
+}
+
+
+
+
+/* Inputs */
+
+.input::placeholder {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px color-mix(in srgb, var(--color-primary) 15%, white) inset !important;
+  caret-color: var(--color-primary) !important
+}
+
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px color-mix(in srgb, var(--color-primary) 15%, white) inset !important;
+  caret-color: var(--color-primary) !important
+}
+
+.input[type=date]::-webkit-calendar-picker-indicator,
+.input[type=datetime-local]::-webkit-calendar-picker-indicator {
+  filter: none !important;
+  opacity: 1 !important;
+  color: #000 !important;
+  background-color: transparent !important;
+  -webkit-filter: brightness(0) invert(0) !important
+}
+
+
+.dark .input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.dark .input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px color-mix(in srgb, var(--color-background) 15%, black) inset !important;
+  caret-color: var(--color-dark-primary) !important
+}
+
+.dark .input .input:-webkit-autofill:hover,
+.dark .input .input:-webkit-autofill:focus,
+.dark .input .input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px color-mix(in srgb, var(--color-background) 15%, black) inset !important;
+  caret-color: var(--color-primary) !important
+}
+
+.dark .input[type=date]::-webkit-calendar-picker-indicator,
+.dark .input[type=datetime-local]::-webkit-calendar-picker-indicator {
+  filter: none !important;
+  opacity: 1 !important;
+  color: #fff !important;
+  background-color: transparent !important;
+  -webkit-filter: brightness(0) invert(1) !important
 }
