@@ -5,7 +5,7 @@ import { LucideAngularModule } from 'lucide-angular';
 import { JIconsService } from 'tailjng';
 
 @Component({
-  selector: 'JInputFile',
+  selector: 'JFileInput',
   imports: [FormsModule, ReactiveFormsModule, NgClass, LucideAngularModule, CommonModule],
   templateUrl: './file-input.component.html',
   styleUrl: './file-input.component.css',

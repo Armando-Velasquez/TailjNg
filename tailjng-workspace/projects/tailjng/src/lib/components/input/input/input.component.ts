@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import { FormsModule, ReactiveFormsModule, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgClass, CommonModule } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 import { JIconsService } from 'tailjng';
@@ -8,21 +8,29 @@ import { JIconsService } from 'tailjng';
   selector: 'JInput',
   imports: [FormsModule, ReactiveFormsModule, NgClass, LucideAngularModule, CommonModule],
   templateUrl: './input.component.html',
-  styleUrl: './input.component.css'
+  styleUrls: ['./input.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => JInputComponent),
+      multi: true
+    }
+  ]
 })
-export class JInputComponent {
+export class JInputComponent implements ControlValueAccessor {
 
   @Input() type: 'text' | 'password' | 'number' | 'date' | 'datetime-local' | 'email' = 'text';
+
   @Input() id?: string;
   @Input() name?: string;
   @Input() placeholder: string = '';
   
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
+  @Input() clearButton: boolean = false;
+  
   @Input() classes: string = '';
   @Input() ngClass: { [key: string]: boolean } = {};
-  
-  @Input() clearButton: boolean = false;
 
   innerValue: any = '';
 
@@ -44,12 +52,28 @@ export class JInputComponent {
     };
   }
 
-  // ControlValueAccessor
-  onChange: any = () => { };
-  onTouched: any = () => { };
+  // ControlValueAccessor methods
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
-  constructor(public readonly iconsService: JIconsService) { }
+  constructor(public readonly iconsService: JIconsService) {}
 
+  // writeValue - To write a value to the component
+  writeValue(value: any): void {
+    if (value !== undefined) {
+      this.value = value;
+    }
+  }
+
+  // registerOnChange - To register the change callback function
+  registerOnChange(fn: (value: any) => void): void {
+    this.onChange = fn;
+  }
+
+  // registerOnTouched - To register the touched callback function
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
 
   /**
    * Writes a value to the component.
@@ -62,8 +86,6 @@ export class JInputComponent {
     this.onTouched();
   }
 
-
-
   /**
    * Clears the input value and resets the component state.
    * This method is typically used when a clear button is clicked.
@@ -73,6 +95,4 @@ export class JInputComponent {
     this.onChange('');
     this.onTouched();
   }
-
-
 }

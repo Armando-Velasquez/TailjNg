@@ -4,7 +4,7 @@ import { NgClass, CommonModule } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
-  selector: 'JInputRange',
+  selector: 'JRangeInput',
   imports: [FormsModule, ReactiveFormsModule, NgClass, LucideAngularModule, CommonModule],
   templateUrl: './range-input.component.html',
   styleUrl: './range-input.component.css'

@@ -23,24 +23,31 @@ Authors:
 License:
   This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
 
-Version: 0.0.9
+Version: 0.0.15
 Creation Date: 2025-01-04
 ===============================================
 */
 
-import { Component, Input } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgClass, CommonModule } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 import { JIconsService } from 'tailjng';
 
 @Component({
-  selector: 'JInputTextarea',
+  selector: 'JTextareaInput',
   imports: [FormsModule, ReactiveFormsModule, NgClass, LucideAngularModule, CommonModule],
   templateUrl: './textarea-input.component.html',
-  styleUrl: './textarea-input.component.css'
+  styleUrls: ['./textarea-input.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => JTextareaInputComponent),
+      multi: true
+    }
+  ]
 })
-export class JTextareaInputComponent {
+export class JTextareaInputComponent implements ControlValueAccessor {
 
   @Input() id?: string;
   @Input() name?: string;
@@ -72,24 +79,39 @@ export class JTextareaInputComponent {
     };
   }
 
-  // ControlValueAccessor
+  // ControlValueAccessor methods
   onChange: any = () => { };
   onTouched: any = () => { };
 
   constructor(public readonly iconsService: JIconsService) { }
+
+  // writeValue - To write a value to the component
+  writeValue(value: any): void {
+    if (value !== undefined) {
+      this.value = value;
+    }
+  }
+
+  // registerOnChange - To register the change callback function
+  registerOnChange(fn: (value: any) => void): void {
+    this.onChange = fn;
+  }
+
+  // registerOnTouched - To register the touched callback function
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
 
   /**
    * Writes a value to the component.
    * @param event 
    */
   onInput(event: Event): void {
-    const target = event.target as HTMLInputElement | HTMLTextAreaElement;
+    const target = event.target as HTMLTextAreaElement;
     this.value = target.value;
     this.onChange(this.value);
     this.onTouched();
   }
-
-
 
   /**
    * Clears the input value and resets the component state.
@@ -100,6 +122,4 @@ export class JTextareaInputComponent {
     this.onChange('');
     this.onTouched();
   }
-
-
 }

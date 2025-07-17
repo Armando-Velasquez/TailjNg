@@ -1,6 +1,32 @@
-<!--===============================================
-Multi-Table Component - tailjNg
-===============================================-->
+<!--
+===============================================
+Component and Function Library - tailjNg
+===============================================
+Description:
+  This library is designed to provide a set of reusable components and optimized functions
+  to facilitate the development of user interfaces and data management in web applications.
+  It includes tools to improve the developer experience and user interaction.
+
+Purpose:
+  - Create modular and customizable components.
+  - Improve front-end development efficiency through reusable tools.
+  - Provide scalable solutions that are easy to integrate with existing applications.
+
+Usage:
+  To access full functionality, simply import the necessary modules and use the
+  components according to your use case. Be sure to review the official documentation for detailed examples 
+  on implementation and customization.
+
+Authors:
+  Armando Josue Velasquez Delgado - Lead Developer
+
+License:
+  This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
+
+Version: 0.0.15
+Creation Date: 2025-01-04
+===============================================
+-->
 
 <div class="relative w-full h-full">
     <!-- Botón para multi-table -->
@@ -30,19 +56,16 @@ Multi-Table Component - tailjNg
             @for (column of columns; track column.key) {
             <div onKeyDown
                  class="flex gap-5 items-center border border-accent dark:border-dark-accent/50 px-4 py-2 cursor-pointer group rounded-md transition-all hover:bg-accent dark:hover:bg-dark-accent/50"
-                 [ngClass]="{
-                    'bg-accent dark:bg-dark-accent/50': isColumnVisible(column),
-                    'opacity-50 pointer-events-none': column.isDisabled
-                 }"
+                 [ngClass]="{'bg-accent dark:bg-dark-accent/50' : column.visible}"
                  (click)="toggleColumnVisibility(column)">
                 <!-- Checkbox oculto -->
                 <input type="checkbox" 
                        [id]="'col-' + column.key" 
-                       [checked]="isColumnVisible(column)" 
+                       [(ngModel)]="column.visible" 
                        class="hidden">
                 
                 <!-- Ícono Check Visible Solo al Seleccionar -->
-                @if (isColumnVisible(column)) {
+                @if (column.visible) {
                 <lucide-icon [name]="icons.check" 
                              size="15" 
                              class="transition text-black dark:text-white" />

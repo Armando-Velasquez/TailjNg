@@ -11,7 +11,7 @@ interface ProcessedOption {
 }
 
 @Component({
-  selector: "JMultiDropdown",
+  selector: "JMultiDropdownSelect",
   imports: [LucideAngularModule, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: "./multi-dropdown.component.html",
   styleUrl: "./multi-dropdown.component.css",
@@ -27,12 +27,12 @@ interface ProcessedOption {
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: JMultiDropdownComponent,
+      useExisting: JMultiDropdownSelectComponent,
       multi: true,
     },
   ],
 })
-export class JMultiDropdownComponent implements ControlValueAccessor, AfterViewInit, OnInit, OnChanges, OnDestroy {
+export class JMultiDropdownSelectComponent implements ControlValueAccessor, AfterViewInit, OnInit, OnChanges, OnDestroy {
   // Lucide icons
   icons = {
     chevronDown: ChevronDown,

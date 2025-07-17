@@ -17,13 +17,13 @@ import { JTextareaInputComponent } from './tailjng/input/input-textarea/textarea
 import { JRangeInputComponent } from './tailjng/input/input-range/range-input.component';
 import { JInputComponent } from './tailjng/input/input/input.component';
 import { JModeToggleComponent } from './tailjng/mode-toggle/mode-toggle.component';
-import { JMultiTableComponent } from './tailjng/select/select-multi-table/multi-table.component';
-import { JDropdownComponent } from './tailjng/select/select-dropdown/dropdown.component';
-import { JMultiDropdownComponent } from './tailjng/select/select-multi-dropdown/multi-dropdown.component';
+import { JMultiTableSelectComponent } from './tailjng/select/select-multi-table/multi-table.component';
+import { JDropdownSelectComponent } from './tailjng/select/select-dropdown/dropdown.component';
+import { JMultiDropdownSelectComponent } from './tailjng/select/select-multi-dropdown/multi-dropdown.component';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, JModeToggleComponent, JTooltipDirective, JLabelComponent, JButtonComponent, JToggleRadioComponent, JAlertDialogComponent, JAlertToastComponent, JInputCheckboxComponent, JSwitchCheckboxComponent, JProgressBarComponent, JViewerImageComponent, JDialogComponent, JFileInputComponent, JTextareaInputComponent, JRangeInputComponent, JInputComponent, JMultiTableComponent, JDropdownComponent, JMultiDropdownComponent],
+  imports: [FormsModule, JModeToggleComponent, JTooltipDirective, JLabelComponent, JButtonComponent, JToggleRadioComponent, JAlertDialogComponent, JAlertToastComponent, JInputCheckboxComponent, JSwitchCheckboxComponent, JProgressBarComponent, JViewerImageComponent, JDialogComponent, JFileInputComponent, JTextareaInputComponent, JRangeInputComponent, JInputComponent, JMultiTableSelectComponent, JDropdownSelectComponent, JMultiDropdownSelectComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -95,15 +95,44 @@ export class AppComponent {
 
 
   tableColumns: TableColumn<any>[] = [
-    { key: "id", label: "ID", visible: true }, // Columna requerida
-    { key: "name", label: "Nombre", visible: true, sortable: true },
-    { key: "email", label: "Email", visible: true, sortable: true },
-    { key: "phone", label: "Teléfono", visible: false },
-    { key: "department", label: "Departamento", visible: true },
-    { key: "position", label: "Cargo", visible: false },
-    { key: "salary", label: "Salario", visible: false },
-    { key: "startDate", label: "Fecha de Inicio", visible: true },
-  ]
+    {
+      key: 'id_plan',
+      label: 'ID',
+      sortable: false,
+      visible: false,
+      isSearchable: false,
+    },
+    {
+      key: 'name_plan',
+      label: 'Nombre',
+      styles: { minWidth: '175px' }
+    },
+    {
+      key: 'gigas_plan',
+      label: 'Gigas',
+      valueGetter: (data) => {
+        return data.gigas_plan ? `${data.gigas_plan} GB` : '0 GB';
+      },
+      styles: { minWidth: '100px', 'text-align': 'center' }
+    },
+    {
+      key: 'tariff_plan',
+      label: 'Tarifa',
+      isCurrency: true,
+      styles: { 'text-align': 'center', minWidth: '100px' }
+    },
+    {
+      key: 'description_plan',
+      label: 'Descripción',
+      styles: { minWidth: '250px' }
+    },
+    {
+      key: 'typePlan.name_typePlan',
+      label: 'Tipo de Plan',
+      isDecorator: true,
+      styles: { 'text-align': 'center', minWidth: '170px' }
+    },
+  ];
 
   onVisibilityChange(columns: TableColumn<any>[]) {
     console.log("Columnas actualizadas:", columns)

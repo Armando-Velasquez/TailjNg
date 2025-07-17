@@ -23,7 +23,7 @@ Authors:
 License:
   This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
 
-Version: 0.0.9
+Version: 0.0.15
 Creation Date: 2025-01-04
 ===============================================
 */
@@ -35,7 +35,7 @@ import { LucideAngularModule } from 'lucide-angular';
 import { JIconsService } from 'tailjng';
 
 @Component({
-  selector: 'JInputFile',
+  selector: 'JFileInput',
   imports: [FormsModule, ReactiveFormsModule, NgClass, LucideAngularModule, CommonModule],
   templateUrl: './file-input.component.html',
   styleUrl: './file-input.component.css',

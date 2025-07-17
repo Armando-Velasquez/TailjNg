@@ -28,3 +28,7 @@ Creation Date: 2025-01-04
 ===============================================
 */
 
+img {
+    -webkit-user-drag: none; /* Safari y Chrome */
+    user-select: none;       /* Evita selección de texto */
+}

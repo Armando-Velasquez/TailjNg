@@ -23,7 +23,7 @@ Authors:
 License:
   This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
 
-Version: 0.0.9
+Version: 0.0.15
 Creation Date: 2025-01-04
 ===============================================
 */
@@ -37,7 +37,7 @@ import { debounceTime, distinctUntilChanged, Subject, Subscription } from "rxjs"
 import { JGenericCrudService } from "tailjng"
 
 @Component({
-  selector: "JSelectDropdown",
+  selector: "JDropdownSelect",
   imports: [LucideAngularModule, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: "./dropdown.component.html",
   styleUrl: "./dropdown.component.css",
@@ -53,12 +53,12 @@ import { JGenericCrudService } from "tailjng"
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: JDropdownComponent,
+      useExisting: JDropdownSelectComponent,
       multi: true,
     },
   ],
 })
-export class JDropdownComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, OnInit, OnChanges {
+export class JDropdownSelectComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, OnInit, OnChanges {
   // Lucide icons
   icons = {
     chevronDown: ChevronDown,

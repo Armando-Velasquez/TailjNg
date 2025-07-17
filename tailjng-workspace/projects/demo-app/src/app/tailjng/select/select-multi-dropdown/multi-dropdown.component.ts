@@ -23,7 +23,7 @@ Authors:
 License:
   This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
 
-Version: 0.0.9
+Version: 0.0.15
 Creation Date: 2025-01-04
 ===============================================
 */
@@ -41,7 +41,7 @@ interface ProcessedOption {
 }
 
 @Component({
-  selector: "JMultiDropdown",
+  selector: "JMultiDropdownSelect",
   imports: [LucideAngularModule, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: "./multi-dropdown.component.html",
   styleUrl: "./multi-dropdown.component.css",
@@ -57,12 +57,12 @@ interface ProcessedOption {
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: JMultiDropdownComponent,
+      useExisting: JMultiDropdownSelectComponent,
       multi: true,
     },
   ],
 })
-export class JMultiDropdownComponent implements ControlValueAccessor, AfterViewInit, OnInit, OnChanges, OnDestroy {
+export class JMultiDropdownSelectComponent implements ControlValueAccessor, AfterViewInit, OnInit, OnChanges, OnDestroy {
   // Lucide icons
   icons = {
     chevronDown: ChevronDown,

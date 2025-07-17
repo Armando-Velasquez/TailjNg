@@ -36,7 +36,7 @@ import { JIconsService } from 'tailjng';
 import { JButtonComponent } from '../../button/button.component';
 
 @Component({
-  selector: 'JImageViewer',
+  selector: 'JViewerImage',
   imports: [CommonModule, LucideAngularModule, JButtonComponent],
   templateUrl: './viewer-image.component.html',
   styleUrl: './viewer-image.component.css'

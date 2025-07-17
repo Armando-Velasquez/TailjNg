@@ -7,7 +7,7 @@ import { debounceTime, distinctUntilChanged, Subject, Subscription } from "rxjs"
 import { JGenericCrudService } from "tailjng"
 
 @Component({
-  selector: "JSelectDropdown",
+  selector: "JDropdownSelect",
   imports: [LucideAngularModule, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: "./dropdown.component.html",
   styleUrl: "./dropdown.component.css",
@@ -23,12 +23,12 @@ import { JGenericCrudService } from "tailjng"
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: JDropdownComponent,
+      useExisting: JDropdownSelectComponent,
       multi: true,
     },
   ],
 })
-export class JDropdownComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, OnInit, OnChanges {
+export class JDropdownSelectComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, OnInit, OnChanges {
   // Lucide icons
   icons = {
     chevronDown: ChevronDown,

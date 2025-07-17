@@ -26,19 +26,16 @@
             @for (column of columns; track column.key) {
             <div onKeyDown
                  class="flex gap-5 items-center border border-accent dark:border-dark-accent/50 px-4 py-2 cursor-pointer group rounded-md transition-all hover:bg-accent dark:hover:bg-dark-accent/50"
-                 [ngClass]="{
-                    'bg-accent dark:bg-dark-accent/50': isColumnVisible(column),
-                    'opacity-50 pointer-events-none': column.isDisabled
-                 }"
+                 [ngClass]="{'bg-accent dark:bg-dark-accent/50' : column.visible}"
                  (click)="toggleColumnVisibility(column)">
                 <!-- Checkbox oculto -->
                 <input type="checkbox" 
                        [id]="'col-' + column.key" 
-                       [checked]="isColumnVisible(column)" 
+                       [(ngModel)]="column.visible" 
                        class="hidden">
                 
                 <!-- Ícono Check Visible Solo al Seleccionar -->
-                @if (isColumnVisible(column)) {
+                @if (column.visible) {
                 <lucide-icon [name]="icons.check" 
                              size="15" 
                              class="transition text-black dark:text-white" />
