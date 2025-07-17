@@ -31,6 +31,9 @@ export * from './lib/services/alert/dialog-alert.service';
 export * from './lib/services/alert/toast-alert.service';
 
 
+// Interface
+export * from './lib/interfaces/crud/crud.interface';
+
 // npm version patch
 // npm run build
 

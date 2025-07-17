@@ -18,8 +18,8 @@ export const appConfig: ApplicationConfig = {
     {
       provide: TAILJNG_CONFIG,
       useValue: {
-        urlBase: 'https://crm-rest.dudu.com.ec',
-        socketUrl: 'https://crm-rest.dudu.com.ec/api/v1',
+        urlBase: 'https://crm-rest.dudu.com.ec/api/v1',
+        socketUrl: 'https://crm-rest.dudu.com.ec',
       }
     },
 

@@ -13,6 +13,60 @@
 
 
 
+  <div>VERIFICAR</div>
+  <JMultiTable 
+    [columns]="tableColumns"
+    [showActions]="true"
+    title="Seleccionar columnas visibles"
+    (visibilityChange)="onVisibilityChange($event)"
+    (columnToggle)="onColumnToggle($event)"
+  />
+
+  <JMultiDropdown 
+    [options]="[
+      { id_user: 1, firstname_user: 'John', lastname_user: 'Doe' },
+      { id_user: 2, firstname_user: 'Jane', lastname_user: 'Smith' },
+      { id_user: 3, firstname_user: 'Alice', lastname_user: 'Johnson' }
+    ]"
+    optionLabel="firstname_user"
+    optionValue="id_user"
+  />
+
+  <JSelectDropdown 
+    type="dropdown"
+    endpoint="user"
+    [optionLabel]="['firstname_user', 'lastname_user']"
+    optionValue="id_user"
+    [loadOnInit]="false"
+    [isSearch]="false"
+    placeholder="Seleccione un digitador" 
+    [showClear]="false"
+  />
+
+  <JSelectDropdown 
+    type="searchable"
+    endpoint="user"
+    [optionLabel]="['firstname_user', 'lastname_user']"
+    optionValue="id_user"
+    [loadOnInit]="false"
+    [isSearch]="false"
+    placeholder="Seleccione un digitador" 
+    [showClear]="false"
+  />
+
+  <JSelectDropdown 
+      [options]="[
+        { id_role: 1, name_role: 'Admin' },
+        { id_role: 2, name_role: 'User' },
+        { id_role: 3, name_role: 'Guest' }
+      ]"
+      optionLabel="name_role"
+      optionValue="id_role"
+
+  />
+
+
+
   <JToggleRadio
       [options]="[
         { id_role: 1, name_role: 'Admin' },
@@ -134,6 +188,8 @@
 
 
   <JModeToggle />
+
+
 
 
 

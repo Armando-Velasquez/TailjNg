@@ -68,6 +68,18 @@ function getComponentList() {
             path: "src/lib/components/input/input",
             dependencies: [],
         },
+        'select-multi-table': {
+            path: "src/lib/components/select/multi-table",
+            dependencies: ["button"],
+        },
+        'select-multi-dropdown': {
+            path: "src/lib/components/select/multi-dropdown",
+            dependencies: [],
+        },
+        'select-dropdown': {
+            path: "src/lib/components/select/dropdown",
+            dependencies: [],
+        },
         // Add more components as needed
     }
 }
