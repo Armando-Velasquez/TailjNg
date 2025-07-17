@@ -1,0 +1,4 @@
+img {
+    -webkit-user-drag: none; /* Safari y Chrome */
+    user-select: none;       /* Evita selección de texto */
+}

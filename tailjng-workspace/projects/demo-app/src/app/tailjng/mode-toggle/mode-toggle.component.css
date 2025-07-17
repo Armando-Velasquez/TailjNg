@@ -28,8 +28,3 @@ Creation Date: 2025-01-04
 ===============================================
 */
 
-@media (max-width: 450px) {
-    .j-dialog-toas {
-        width: 90% !important;
-    }
-}

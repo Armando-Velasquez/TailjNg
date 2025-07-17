@@ -1,5 +1,9 @@
 function getComponentList() {
     return {
+        'mode-toggle': {
+            path: "src/lib/components/mode-toggle",
+            dependencies: [],
+        },
         color: {
             path: "src/lib/components/color",
             dependencies: [],
@@ -46,6 +50,22 @@ function getComponentList() {
         },
         dialog: {
             path: "src/lib/components/dialog",
+            dependencies: [],
+        },
+        'input-file': {
+            path: "src/lib/components/input/file-input",
+            dependencies: [],
+        },
+        'input-textarea': {
+            path: "src/lib/components/input/textarea-input",
+            dependencies: [],
+        },
+        'input-range': {
+            path: "src/lib/components/input/range-input",
+            dependencies: [],
+        },
+        input: {
+            path: "src/lib/components/input/input",
             dependencies: [],
         },
         // Add more components as needed

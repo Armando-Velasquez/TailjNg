@@ -1,4 +1,4 @@
-/*
+<!--
 ===============================================
 Component and Function Library - tailjNg
 ===============================================
@@ -26,10 +26,13 @@ License:
 Version: 0.0.9
 Creation Date: 2025-01-04
 ===============================================
-*/
+-->
 
-@media (max-width: 450px) {
-    .j-dialog-toas {
-        width: 90% !important;
+<button (click)="toggleDarkMode()"
+    class="p-2 bg-gray-300 dark:bg-gray-700 text-black dark:text-white rounded-full cursor-pointer">
+    @if (theme === 'dark') {
+    <lucide-icon [name]="iconsService.icons.moon"></lucide-icon>
+    } @else {
+    <lucide-icon [name]="iconsService.icons.sun"></lucide-icon>
     }
-}
+</button>

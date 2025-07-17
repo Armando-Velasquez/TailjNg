@@ -118,7 +118,7 @@ export class JToggleRadioComponent implements OnInit, ControlValueAccessor {
     });
 
     this.genericService.getAll<any>(this.endpoint, params).subscribe({
-      next: (res) => {
+      next: (res: any) => {
         const data = res.data[this.endpoint] || [];
         this.options = data;
         this.processOptions();

@@ -1,4 +1,4 @@
-<section class="grid gap-2 px-50">
+<section class="grid gap-2 px-50 pb-10">
 
   <button jTooltip="hola" jTooltipPosition="bottom">Hover me</button>
 
@@ -80,14 +80,63 @@
 
 
 
+  <div>
+      <JInputFile 
+        (change)="onFileSelected($event)" 
+        accept="image/*" 
+        [(ngModel)]="file" 
+        [clearButton]="true"
+        [showImage]="true"
+      />
+  </div>
+  
+  <div>
+    <JInputTextarea 
+      placeholder="Escribe algo aquí..." 
+    />
+  </div>
 
+
+
+  <JInputRange 
+    [min]="0"
+    [max]="1000"
+    [step]="1"
+    [simbol]="'%'"
+  />
   
 
 
+  <JInput 
+    placeholder="Escribe texto aquí..."
+  />
+  <JInput 
+    type="number"
+    placeholder="Escribe números aquí..."
+  />
+  <JInput 
+    type="password"
+    placeholder="Escribe contraseña aquí..."
+  />
+  <JInput 
+    type="date"
+    placeholder="Escribe fecha aquí..."
+  />
+  <JInput 
+    type="datetime-local"
+    placeholder="Escribe fecha y hora aquí..."
+  />
+  <JInput 
+    type="email"
+    placeholder="Escribe correo aquí..."
+  />
 
 
 
-  
+  <JModeToggle />
+
+
+
 
 </section>
 

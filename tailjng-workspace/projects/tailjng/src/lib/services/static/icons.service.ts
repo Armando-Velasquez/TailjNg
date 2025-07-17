@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Check, CircleCheck, CircleHelp, CircleX, ImageOff, Info, Loader2, Minimize2, RefreshCcw, RotateCcw, RotateCw, Scan, TriangleAlert, X, ZoomIn, ZoomOut } from 'lucide-angular';
+import { Check, CircleCheck, CircleHelp, CircleX, ImageOff, Info, Loader2, Minimize2, Moon, RefreshCcw, RotateCcw, RotateCw, Scan, Sun, TriangleAlert, Upload, X, ZoomIn, ZoomOut } from 'lucide-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +22,11 @@ export class JIconsService {
     fullscreen: Scan,
     exitFullscreen: Minimize2,
     imageOff: ImageOff,
+    upload: Upload,
+    sun: Sun,
+    moon: Moon,
     loading: Loader2,
   }
-
 
   constructor() { }
 }

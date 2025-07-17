@@ -60,7 +60,8 @@
               }
             ],
             "styles": [
-              "projects/demo-app/src/styles.css"
+              "projects/demo-app/src/styles.css",
+              "node_modules/tailjng/src/styles.css"
             ],
             "scripts": []
           },

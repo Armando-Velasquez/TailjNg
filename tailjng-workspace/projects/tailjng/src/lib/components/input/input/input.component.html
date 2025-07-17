@@ -1,0 +1,24 @@
+<div class="relative w-full">
+    <input
+        [type]="type"
+        [id]="id"
+        [name]="name ?? ''"
+        [placeholder]="placeholder"
+        [value]="value"
+        (input)="onInput($event)"
+        [required]="required"
+        [disabled]="disabled"
+        (blur)="onTouched()"
+        [ngClass]="combinedNgClass"
+        [class]="classes"
+        class="input w-full h-[40px] bg-background dark:bg-dark-background border border-border dark:border-dark-border text-black dark:text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition duration-200" 
+    />
+
+    @if (value && clearButton) {
+        <button type="button"
+        class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 text-gray-400 hover:text-gray-500 pr-1 mr-1 text-gray-400 hover:text-gray-600 focus:outline-none cursor-pointer"
+        (click)="clearInput()">
+            <lucide-icon [name]="iconsService.icons.close" class="w-4 h-4" />
+        </button>
+    }
+</div>
