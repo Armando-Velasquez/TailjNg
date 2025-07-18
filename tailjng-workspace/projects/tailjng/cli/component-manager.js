@@ -1,3 +1,5 @@
+// component-manager.js
+
 const fs = require("fs")
 const path = require("path")
 const { copyComponentFiles } = require("./file-operations")
@@ -8,12 +10,12 @@ async function addComponent(componentName, componentList) {
     const componentData = componentList[componentName]
     if (!componentData) {
         console.error(
-            `${COLORS.red}[tailjng CLI] ERROR: Component "${componentName}" not found in the component list.${COLORS.reset}`,
+            `${COLORS.red}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.red}ERROR: Component ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.red}not found in the component list.${COLORS.reset}`,
         )
         process.exit(1)
     }
 
-    console.log(`${COLORS.blue}[tailjng CLI] Adding component: ${componentName}${COLORS.reset}`)
+    console.log(`${COLORS.blue}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.blue}Adding component: ${COLORS.bright}"${componentName}"${COLORS.reset}`)
 
     // Create a Set to track already processed components
     const installedComponents = new Set()
@@ -28,18 +30,42 @@ async function addComponent(componentName, componentList) {
 
         if (wasInstalled) {
             console.log(
-                `${COLORS.greenBright}[tailjng CLI] ✔ Component "${componentName}" installed successfully.${COLORS.reset}`,
+                `${COLORS.greenBright}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.greenBright}✔ Component ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.greenBright}installed successfully.${COLORS.reset}`,
             )
         } else {
             console.log(
-                `${COLORS.yellow}[tailjng CLI] Component "${componentName}" installation was cancelled by user.${COLORS.reset}`,
+                `${COLORS.yellow}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.yellow}Component ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.yellow}installation was cancelled by user.${COLORS.reset}`,
             )
         }
     } else {
         console.log(
-            `${COLORS.dim}[tailjng CLI] Main component "${componentName}" was already processed as a dependency.${COLORS.reset}`,
+            `${COLORS.dim}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.dim}Main component ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.dim}was already processed as a dependency.${COLORS.reset}`,
         )
     }
 }
 
-module.exports = { addComponent }
+
+async function installAllComponents(componentList) {
+    console.log(`${COLORS.blue}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.blue}Installing all components...${COLORS.reset}`)
+
+    const installedComponents = new Set()
+
+    for (const componentName of Object.keys(componentList)) {
+        if (!installedComponents.has(componentName)) {
+            await installDependencies(componentList[componentName].dependencies, componentList, installedComponents)
+
+            if (!installedComponents.has(componentName)) {
+                const wasInstalled = await copyComponentFiles(componentName, componentList[componentName].path, false)
+                if (wasInstalled) {
+                    console.log(`${COLORS.greenBright}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.greenBright}✔ Component ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.greenBright}installed successfully.${COLORS.reset}`)
+                } else {
+                    console.log(`${COLORS.yellow}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.yellow}Component ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.yellow}installation was skipped by user.${COLORS.reset}`)
+                }
+            }
+        }
+    }
+
+    console.log(`${COLORS.greenBright}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.greenBright}✔ All components processed.${COLORS.reset}`)
+}
+
+module.exports = { addComponent, installAllComponents }

@@ -1,3 +1,5 @@
+// tailwind-check.js
+
 const { COLORS } = require("./colors")
 
 function checkTailwindInstalled() {

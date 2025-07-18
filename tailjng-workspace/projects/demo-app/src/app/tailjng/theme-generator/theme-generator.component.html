@@ -1,0 +1,153 @@
+<!--
+===============================================
+Component and Function Library - tailjNg
+===============================================
+Description:
+  This library is designed to provide a set of reusable components and optimized functions
+  to facilitate the development of user interfaces and data management in web applications.
+  It includes tools to improve the developer experience and user interaction.
+
+Purpose:
+  - Create modular and customizable components.
+  - Improve front-end development efficiency through reusable tools.
+  - Provide scalable solutions that are easy to integrate with existing applications.
+
+Usage:
+  To access full functionality, simply import the necessary modules and use the
+  components according to your use case. Be sure to review the official documentation for detailed examples 
+  on implementation and customization.
+
+Authors:
+  Armando Josue Velasquez Delgado - Lead Developer
+
+License:
+  This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
+
+Version: 0.0.15
+Creation Date: 2025-01-04
+===============================================
+-->
+
+<main class="container mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- Controls Panel -->
+        <div class="space-y-8 select-none">
+
+            <div>
+                <h2 class="text-sm font-bold mb-1 opacity-60">Selector de color</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- Color Picker -->
+                    <div class="relative h-64 w-full overflow-hidden rounded-lg border border-border dark:border-dark-border">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white to-transparent" style="z-index: 1;"></div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black" style="z-index: 2;"></div>
+                        <div class="absolute inset-0" [style.background]="'linear-gradient(to right, hsl(' + huePosition + ', 0%, 50%), hsl(' + huePosition + ', 100%, 50%))'" style="z-index: 0;"></div>
+                        <div class="absolute w-6 h-6 rounded-full border-2 border-white transform -translate-x-1/2 -translate-y-1/2 cursor-pointer" [style.left.%]="colorPickerPosition.x" [style.top.%]="colorPickerPosition.y" style="z-index: 3;"></div>
+                        <div class="absolute inset-0 cursor-pointer" (mousedown)="startColorPicking($event)" (mousemove)="updateColorPicking($event)" (mouseup)="stopColorPicking()" (mouseleave)="stopColorPicking()" style="z-index: 4;"></div>
+                    </div>
+
+                    <!-- Color Spectrum -->
+                    <div class="space-y-4">
+                        <div class="relative">
+
+                            <!-- Picker bar -->
+                            <div class="h-8 w-full rounded-lg overflow-hidden border border-border dark:border-dark-border relative">
+                                <div class="absolute inset-0" [style.background]="hueGradient"></div>
+                                
+                                <input 
+                                    type="range" 
+                                    min="0" 
+                                    max="360" 
+                                    [value]="huePosition"
+                                    (input)="updateHueFromInput($event)"
+                                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+                                />
+                            </div>
+                          
+                             <!-- Ball outside the flow to stand out -->
+                            <div class="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full border-2 border-white z-10 pointer-events-none"
+                                 [style.left.%]="(huePosition / 360) * 100"
+                                 [style.backgroundColor]="hslToHex(huePosition, 100, 50)">
+                            </div>
+                          
+                        </div>
+                        
+
+                        <!-- Hex Input -->
+                        <JContainerForm>
+                            <JContainerForm>
+                                <JLabel for="baseColor" classes="opacity-60">Ingresa un valor Hex</JLabel>
+
+                                <JContainerForm [rows]="true">
+
+                                    <JContainerForm class="flex-1">
+                                        <JInput 
+                                            id="baseColor" 
+                                            type="text" 
+                                            [(ngModel)]="baseColor"
+                                            (input)="updateFromHexInput()" 
+                                            placeholder="#000000" 
+                                        />
+                                    </JContainerForm>
+
+                                    <!-- Color Preview -->
+                                    <div class="h-[35px] w-[60px] rounded shadow-md" [style.background-color]="baseColor"></div>
+
+                                </JContainerForm>
+                            </JContainerForm>
+
+                            <!-- Saturation Slider -->
+                            <JRangeInput 
+                                [min]="0" 
+                                [max]="100" 
+                                [(ngModel)]="saturation"
+                                (input)="generateTheme()" 
+                                placeholder="Saturación" 
+                                [isLabel]="true" 
+                                simbol="%" 
+                            />
+
+                            <!-- Lightness Slider -->
+                            <JRangeInput 
+                                [min]="0" 
+                                [max]="100" 
+                                [(ngModel)]="lightness" 
+                                (input)="generateTheme()"
+                                placeholder="Luminosidad" 
+                                [isLabel]="true" 
+                                simbol="%" 
+                            />
+
+                        </JContainerForm>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Code Preview -->
+        <div class="relative">
+            <div
+                class="h-70 bg-background dark:bg-dark-background overflow-auto rounded-lg font-mono text-sm whitespace-pre-wrap border border-border dark:border-dark-border scroll-element">
+                <div class="p-4">
+                    <span>{{ themeCode }}</span>
+                </div>
+            </div>
+
+            <div class="absolute top-4 right-4">
+                <JButton 
+                    (clicked)="copyThemeToClipboard()" 
+                    [icon]="iconsService.icons.copy" 
+                    [iconChange]="iconsService.icons.check"
+                    [isChangeIcon]="copied" 
+                    [iconSize]="15" 
+                    tooltip="Copiar" 
+                    classes="w-[25px] h-[25px]" 
+                />
+            </div>
+        </div>
+
+    </div>
+</main>

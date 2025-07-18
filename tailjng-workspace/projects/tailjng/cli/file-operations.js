@@ -1,3 +1,5 @@
+
+// file-operations.js
 const fs = require("fs")
 const path = require("path")
 const { COLORS } = require("./settings/colors")
@@ -12,7 +14,7 @@ async function copyComponentFiles(componentName, componentPath, isDependency = f
     while (!fs.existsSync(path.join(currentDir, "node_modules"))) {
         currentDir = path.dirname(currentDir)
         if (currentDir === path.dirname(currentDir)) {
-            console.error(`${COLORS.red}[tailjng CLI] ERROR: node_modules not found in project root.${COLORS.reset}`)
+            console.error(`${COLORS.red}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.red}ERROR: node_modules not found in project root.${COLORS.reset}`)
             process.exit(1)
         }
     }
@@ -28,7 +30,7 @@ async function copyComponentFiles(componentName, componentPath, isDependency = f
     // Check if the component exists in the correct path
     if (!fs.existsSync(nodeModulesPath)) {
         console.error(
-            `${COLORS.red}[tailjng CLI] ERROR: Component path "${nodeModulesPath}" does not exist.${COLORS.reset}`,
+            `${COLORS.red}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.red}ERROR: Component path ${COLORS.bright}"${nodeModulesPath}"${COLORS.reset} ${COLORS.red}does not exist.${COLORS.reset}`,
         )
         process.exit(1)
     }
@@ -39,12 +41,12 @@ async function copyComponentFiles(componentName, componentPath, isDependency = f
         const shouldOverwrite = await askOverwrite(componentName, relativeTargetPath, isDependency)
 
         if (!shouldOverwrite) {
-            console.log(`${COLORS.dim}[tailjng CLI] Skipping "${componentName}" - keeping existing version.${COLORS.reset}`)
+            console.log(`${COLORS.dim}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.dim}Skipping ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.dim}- keeping existing version.${COLORS.reset}`)
             return false // Return false to indicate that it was not installed
         }
 
         // If decided to overwrite, remove the existing directory
-        console.log(`${COLORS.yellow}[tailjng CLI] Removing existing "${componentName}" to overwrite...${COLORS.reset}`)
+        console.log(`${COLORS.yellow}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.yellow}Removing existing ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.yellow}to overwrite...${COLORS.reset}`)
         fs.rmSync(targetPath, { recursive: true, force: true })
     }
 
@@ -54,11 +56,11 @@ async function copyComponentFiles(componentName, componentPath, isDependency = f
     // See if the component has subfolders
     if (pathInfo.hasSubfolders) {
         console.log(
-            `${COLORS.blue}[tailjng CLI] Copying ${componentType} "${componentName}" (${pathInfo.fullSubPath}) → ${relativeTargetPath}${COLORS.reset}`,
+            `${COLORS.blue}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.blue}Copying ${componentType} ${COLORS.bright}"${componentName}"${COLORS.reset} (${pathInfo.fullSubPath}) → ${relativeTargetPath}${COLORS.reset}`,
         )
     } else {
         console.log(
-            `${COLORS.blue}[tailjng CLI] Copying ${componentType} "${componentName}" → ${relativeTargetPath}${COLORS.reset}`,
+            `${COLORS.blue}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.blue}Copying ${componentType} ${COLORS.bright}"${componentName}"${COLORS.reset} → ${relativeTargetPath}${COLORS.reset}`,
         )
     }
 
@@ -79,7 +81,7 @@ async function copyComponentFiles(componentName, componentPath, isDependency = f
         // For example, replace imports, etc.
 
         fs.writeFileSync(destFile, content)
-        console.log(`${COLORS.green}[tailjng CLI] Copied file: ${file}${COLORS.reset}`)
+        console.log(`${COLORS.green}${COLORS.bright}[tailjng CLI]${COLORS.reset} ${COLORS.green}Copied file: ${COLORS.bright}${file}${COLORS.reset}`)
     })
 
     return true // Return true to indicate that it was installed successfully

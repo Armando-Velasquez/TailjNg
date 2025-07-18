@@ -39,8 +39,8 @@ import { JGenericCrudService } from "tailjng"
 @Component({
   selector: "JDropdownSelect",
   imports: [LucideAngularModule, CommonModule, FormsModule, ReactiveFormsModule],
-  templateUrl: "./dropdown.component.html",
-  styleUrl: "./dropdown.component.css",
+  templateUrl: "./dropdown-select.component.html",
+  styleUrl: "./dropdown-select.component.css",
   animations: [
     trigger("modalTransition", [
       transition(":enter", [

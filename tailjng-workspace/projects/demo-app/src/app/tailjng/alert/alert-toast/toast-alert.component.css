@@ -23,7 +23,7 @@ Authors:
 License:
   This project is licensed under the BSD 3-Clause - see the LICENSE file for more details.
 
-Version: 0.0.9
+Version: 0.0.15
 Creation Date: 2025-01-04
 ===============================================
 */

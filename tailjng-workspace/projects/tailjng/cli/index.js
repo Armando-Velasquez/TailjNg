@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
+// index.js
 const { checkTailwindInstalled } = require("./settings/tailwind-check")
-const { addComponent } = require("./component-manager")
+const { addComponent, installAllComponents } = require("./component-manager")
 const { getComponentList } = require("./settings/components-list")
 const { COLORS } = require("./settings/colors")
 
@@ -20,10 +21,14 @@ async function main() {
         await addComponent(componentName, getComponentList())
     } else if (command === "list") {
         showComponentList()
+    } else if (command === "install-all") {
+        checkTailwindInstalled()
+        await installAllComponents(getComponentList())
     } else {
-        console.log(`${COLORS.cyan}Usage:
-  npx tailjng add <componentName>      Add a component to your project
-  npx tailjng list                    List all available components${COLORS.reset}`)
+        console.log(`${COLORS.bright}${COLORS.blue}Usage:${COLORS.reset}
+  ${COLORS.cyan}${COLORS.bright}npx tailjng${COLORS.reset} ${COLORS.bright}${COLORS.green}add${COLORS.reset} ${COLORS.dim}<componentName>${COLORS.reset}      ${COLORS.blue}Add a component to your project${COLORS.reset}
+  ${COLORS.cyan}${COLORS.bright}npx tailjng${COLORS.reset} ${COLORS.bright}${COLORS.green}list${COLORS.reset}                     ${COLORS.blue}List all available components${COLORS.reset}
+  ${COLORS.cyan}${COLORS.bright}npx tailjng${COLORS.reset} ${COLORS.bright}${COLORS.green}install-all${COLORS.reset}              ${COLORS.blue}Install all available components${COLORS.reset}`)
     }
 }
 

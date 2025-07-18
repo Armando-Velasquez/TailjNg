@@ -25,6 +25,7 @@ export * from './lib/services/transformer/calendar.service';
 
 // Static
 export * from './lib/services/static/icons.service';
+export * from './lib/services/static/theme.service';
 
 // Alert
 export * from './lib/services/alert/dialog-alert.service';

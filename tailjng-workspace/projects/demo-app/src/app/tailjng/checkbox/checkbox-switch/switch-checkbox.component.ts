@@ -29,22 +29,31 @@ Creation Date: 2025-01-04
 */
 
 import { Component, Input } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { LucideAngularModule } from 'lucide-angular';
+import { JIconsService } from 'tailjng';
 
 @Component({
-  selector: 'JProgressBar',
-  imports: [NgClass],
-  templateUrl: './progress-bar.component.html',
-  styleUrl: './progress-bar.component.css'
+  selector: 'JSwitchCheckbox',
+  imports: [CommonModule, LucideAngularModule],
+  templateUrl: './switch-checkbox.component.html',
+  styleUrl: './switch-checkbox.component.css'
 })
-export class JProgressBarComponent {
+export class JSwitchCheckboxComponent {
 
-  @Input() value: number = 0;
-  @Input() max: number = 100;
-  @Input() simbol: string = '%';
+  @Input() title!: string;
 
-  @Input() height: number = 30;
-  @Input() borderRadius: number = 50;
-  @Input() ngClasses: string[] = [];
+  @Input() disabled?: boolean;
+  @Input() classes: string = '';
+  @Input() isLoading?: boolean;
+
+  @Input() isChecked: boolean = false;
+
+  // Funciones
+  @Input() toggleSwitch: (isChecked: boolean) => void = () => { };
+
+  constructor(
+    public readonly iconsService: JIconsService
+  ) { }
 
 }

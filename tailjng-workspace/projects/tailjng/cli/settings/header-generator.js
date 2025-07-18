@@ -1,3 +1,5 @@
+// header-generator.js
+
 const path = require("path")
 
 function generateHeaderComment(fileName) {

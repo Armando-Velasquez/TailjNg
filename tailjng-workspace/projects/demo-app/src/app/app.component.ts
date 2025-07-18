@@ -6,10 +6,7 @@ import { JToggleRadioComponent } from './tailjng/toggle-radio/toggle-radio.compo
 import { JAlertDialogService, JAlertToastService, TableColumn } from 'tailjng';
 import { JAlertDialogComponent } from './tailjng/alert/alert-dialog/dialog-alert.component';
 import { JAlertToastComponent } from './tailjng/alert/alert-toast/toast-alert.component';
-import { JInputCheckboxComponent } from './tailjng/checkbox/input-checkbox/input-checkbox.component';
-import { JSwitchCheckboxComponent } from './tailjng/checkbox/switch-checkbox/switch-checkbox.component';
 import { JProgressBarComponent } from './tailjng/progress-bar/progress-bar.component';
-import { JViewerImageComponent } from './tailjng/image/viewer-image/viewer-image.component';
 import { JDialogComponent } from './tailjng/dialog/dialog.component';
 import { JFileInputComponent } from './tailjng/input/input-file/file-input.component';
 import { FormsModule } from '@angular/forms';
@@ -17,9 +14,12 @@ import { JTextareaInputComponent } from './tailjng/input/input-textarea/textarea
 import { JRangeInputComponent } from './tailjng/input/input-range/range-input.component';
 import { JInputComponent } from './tailjng/input/input/input.component';
 import { JModeToggleComponent } from './tailjng/mode-toggle/mode-toggle.component';
-import { JMultiTableSelectComponent } from './tailjng/select/select-multi-table/multi-table.component';
-import { JDropdownSelectComponent } from './tailjng/select/select-dropdown/dropdown.component';
-import { JMultiDropdownSelectComponent } from './tailjng/select/select-multi-dropdown/multi-dropdown.component';
+import { JInputCheckboxComponent } from './tailjng/checkbox/checkbox-input/input-checkbox.component';
+import { JMultiTableSelectComponent } from './tailjng/select/select-multi-table/multi-table-select.component';
+import { JViewerImageComponent } from './tailjng/image/image-viewer/viewer-image.component';
+import { JSwitchCheckboxComponent } from './tailjng/checkbox/checkbox-switch/switch-checkbox.component';
+import { JDropdownSelectComponent } from './tailjng/select/select-dropdown/dropdown-select.component';
+import { JMultiDropdownSelectComponent } from './tailjng/select/select-multi-dropdown/multi-dropdown-select.component';
 
 @Component({
   selector: 'app-root',

@@ -1,4 +1,4 @@
-/*
+<!--
 ===============================================
 Component and Function Library - tailjNg
 ===============================================
@@ -26,25 +26,28 @@ License:
 Version: 0.0.15
 Creation Date: 2025-01-04
 ===============================================
-*/
+-->
 
-import { Component, Input } from '@angular/core';
-import { NgClass } from '@angular/common';
+<div class="flex flex-col items-center justify-center gap-2">
+    @if (title) {
+        <span class="text-[8px] opacity-80">{{title}}</span>
+    }
 
-@Component({
-  selector: 'JProgressBar',
-  imports: [NgClass],
-  templateUrl: './progress-bar.component.html',
-  styleUrl: './progress-bar.component.css'
-})
-export class JProgressBarComponent {
-
-  @Input() value: number = 0;
-  @Input() max: number = 100;
-  @Input() simbol: string = '%';
-
-  @Input() height: number = 30;
-  @Input() borderRadius: number = 50;
-  @Input() ngClasses: string[] = [];
-
-}
+    <label class="relative inline-flex items-center justify-center">
+        <input 
+            type="checkbox" 
+            class="absolute opacity-0 cursor-pointer peer" 
+            [checked]="getValue(item, column)"
+            (change)="onCheckboxChange(item, column)" 
+            [disabled]="disabled"
+        >
+        <span
+            class="inline-flex items-center justify-center w-[25px] h-[25px] bg-white border border-primary dark:border-dark-border rounded transition-all duration-200 ease-in-out relative peer  peer-checked:bg-primary peer-checked:border-primary dark:peer-checked:bg-dark-primary dark:peer-checked:border-dark-primary"
+            [class]="classes"
+            [ngClass]="{'opacity-50' : disabled, 'cursor-not-allowed': disabled, 'cursor-pointer': !disabled}"
+        >
+            <lucide-icon [name]="icon" [size]="iconSize" class="text-white"></lucide-icon>
+        </span>
+    </label>
+    
+</div>

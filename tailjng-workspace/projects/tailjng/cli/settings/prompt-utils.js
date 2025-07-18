@@ -1,3 +1,5 @@
+// prompt-utils.js
+
 const readline = require("readline")
 const { COLORS } = require("./colors")
 
@@ -22,7 +24,7 @@ async function askOverwrite(componentName, targetPath, isDependency = false) {
     const componentType = isDependency ? "dependency component" : "component"
 
     console.log(
-        `${COLORS.yellow}⚠  [tailjng CLI] WARNING: ${componentType} "${componentName}" already exists!${COLORS.reset}`,
+        `${COLORS.yellow}${COLORS.bright}⚠ [tailjng CLI] WARNING:${COLORS.reset} ${COLORS.yellow}${componentType} ${COLORS.bright}"${componentName}"${COLORS.reset} ${COLORS.yellow}already exists!${COLORS.reset}`,
     )
     console.log(`${COLORS.dim}   Path: ${targetPath}${COLORS.reset}`)
     console.log(
