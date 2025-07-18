@@ -20,10 +20,12 @@ import { JViewerImageComponent } from './tailjng/image/image-viewer/viewer-image
 import { JSwitchCheckboxComponent } from './tailjng/checkbox/checkbox-switch/switch-checkbox.component';
 import { JDropdownSelectComponent } from './tailjng/select/select-dropdown/dropdown-select.component';
 import { JMultiDropdownSelectComponent } from './tailjng/select/select-multi-dropdown/multi-dropdown-select.component';
+import { JThemeGeneratorComponent } from './tailjng/theme-generator/theme-generator.component';
+import { JContainerFormComponent } from './tailjng/form/form-container/container-form.component';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, JModeToggleComponent, JTooltipDirective, JLabelComponent, JButtonComponent, JToggleRadioComponent, JAlertDialogComponent, JAlertToastComponent, JInputCheckboxComponent, JSwitchCheckboxComponent, JProgressBarComponent, JViewerImageComponent, JDialogComponent, JFileInputComponent, JTextareaInputComponent, JRangeInputComponent, JInputComponent, JMultiTableSelectComponent, JDropdownSelectComponent, JMultiDropdownSelectComponent],
+  imports: [FormsModule, JModeToggleComponent, JTooltipDirective, JLabelComponent, JButtonComponent, JToggleRadioComponent, JAlertDialogComponent, JAlertToastComponent, JInputCheckboxComponent, JSwitchCheckboxComponent, JProgressBarComponent, JViewerImageComponent, JDialogComponent, JFileInputComponent, JTextareaInputComponent, JRangeInputComponent, JInputComponent, JMultiTableSelectComponent, JDropdownSelectComponent, JMultiDropdownSelectComponent, JThemeGeneratorComponent, JContainerFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

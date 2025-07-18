@@ -1,4 +1,10 @@
-<section class="grid gap-2 px-50 pb-10">
+<section class="relative grid gap-2 px-50 py-10">
+
+  <div class="absolute top-0 right-0 p-4">
+      <JModeToggle />
+  </div>
+
+  <JThemeGenerator />
 
   <button jTooltip="hola" jTooltipPosition="bottom">Hover me</button>
 
@@ -12,59 +18,59 @@
   <JButton classes="info" (clicked)="onShowToast()">Click Me</JButton>
 
 
+    <div>VERIFICAR</div>
+    <JMultiTableSelect
+      [columns]="tableColumns"
+      [showActions]="true"
+      title="Seleccionar columnas visibles"
+      (visibilityChange)="onVisibilityChange($event)"
+      (columnToggle)="onColumnToggle($event)"
+    />
 
-  <div>VERIFICAR</div>
-  <JMultiTableSelect
-    [columns]="tableColumns"
-    [showActions]="true"
-    title="Seleccionar columnas visibles"
-    (visibilityChange)="onVisibilityChange($event)"
-    (columnToggle)="onColumnToggle($event)"
-  />
-
-  <JMultiDropdownSelect
-    [options]="[
-      { id_user: 1, firstname_user: 'John', lastname_user: 'Doe' },
-      { id_user: 2, firstname_user: 'Jane', lastname_user: 'Smith' },
-      { id_user: 3, firstname_user: 'Alice', lastname_user: 'Johnson' }
-    ]"
-    optionLabel="firstname_user"
-    optionValue="id_user"
-  />
-
-  <JDropdownSelect
-    type="dropdown"
-    endpoint="user"
-    [optionLabel]="['firstname_user', 'lastname_user']"
-    optionValue="id_user"
-    [loadOnInit]="false"
-    [isSearch]="false"
-    placeholder="Seleccione un digitador" 
-    [showClear]="false"
-  />
-
-  <JDropdownSelect 
-    type="searchable"
-    endpoint="user"
-    [optionLabel]="['firstname_user', 'lastname_user']"
-    optionValue="id_user"
-    [loadOnInit]="false"
-    [isSearch]="false"
-    placeholder="Seleccione un digitador" 
-    [showClear]="false"
-  />
-
-  <JDropdownSelect 
+  <JContainerForm [columns]="2">
+    <JMultiDropdownSelect
       [options]="[
-        { id_role: 1, name_role: 'Admin' },
-        { id_role: 2, name_role: 'User' },
-        { id_role: 3, name_role: 'Guest' }
+        { id_user: 1, firstname_user: 'John', lastname_user: 'Doe' },
+        { id_user: 2, firstname_user: 'Jane', lastname_user: 'Smith' },
+        { id_user: 3, firstname_user: 'Alice', lastname_user: 'Johnson' }
       ]"
-      optionLabel="name_role"
-      optionValue="id_role"
+      optionLabel="firstname_user"
+      optionValue="id_user"
+    />
 
-  />
+    <JDropdownSelect
+      type="dropdown"
+      endpoint="user"
+      [optionLabel]="['firstname_user', 'lastname_user']"
+      optionValue="id_user"
+      [loadOnInit]="false"
+      [isSearch]="false"
+      placeholder="Seleccione un digitador" 
+      [showClear]="false"
+    />
 
+    <JDropdownSelect 
+      type="searchable"
+      endpoint="user"
+      [optionLabel]="['firstname_user', 'lastname_user']"
+      optionValue="id_user"
+      [loadOnInit]="false"
+      [isSearch]="false"
+      placeholder="Seleccione un digitador" 
+      [showClear]="false"
+    />
+
+    <JDropdownSelect 
+        [options]="[
+          { id_role: 1, name_role: 'Admin' },
+          { id_role: 2, name_role: 'User' },
+          { id_role: 3, name_role: 'Guest' }
+        ]"
+        optionLabel="name_role"
+        optionValue="id_role"
+
+    />
+  </JContainerForm>
 
 
   <JToggleRadio
@@ -133,61 +139,63 @@
   </ng-template>
 
 
+  <JContainerForm [columns]="2">
 
-  <div>
-      <JFileInput 
-        (change)="onFileSelected($event)" 
-        accept="image/*" 
-        [(ngModel)]="file" 
-        [clearButton]="true"
-        [showImage]="true"
+
+    <div>
+        <JFileInput 
+          (change)="onFileSelected($event)" 
+          accept="image/*" 
+          [(ngModel)]="file" 
+          [clearButton]="true"
+          [showImage]="true"
+        />
+    </div>
+    
+    <div>
+      <JTextareaInput 
+        placeholder="Escribe algo aquí..." 
       />
-  </div>
-  
-  <div>
-    <JTextareaInput 
-      placeholder="Escribe algo aquí..." 
+    </div>
+
+
+
+    <JRangeInput 
+      [min]="0"
+      [max]="1000"
+      [step]="1"
+      [simbol]="'%'"
     />
-  </div>
+    
 
 
+    <JInput 
+      placeholder="Escribe texto aquí..."
+    />
+    <JInput 
+      type="number"
+      placeholder="Escribe números aquí..."
+    />
+    <JInput 
+      type="password"
+      placeholder="Escribe contraseña aquí..."
+    />
+    <JInput 
+      type="date"
+      placeholder="Escribe fecha aquí..."
+    />
+    <JInput 
+      type="datetime-local"
+      placeholder="Escribe fecha y hora aquí..."
+    />
+    <JInput 
+      type="email"
+      placeholder="Escribe correo aquí..."
+    />
 
-  <JRangeInput 
-    [min]="0"
-    [max]="1000"
-    [step]="1"
-    [simbol]="'%'"
-  />
-  
-
-
-  <JInput 
-    placeholder="Escribe texto aquí..."
-  />
-  <JInput 
-    type="number"
-    placeholder="Escribe números aquí..."
-  />
-  <JInput 
-    type="password"
-    placeholder="Escribe contraseña aquí..."
-  />
-  <JInput 
-    type="date"
-    placeholder="Escribe fecha aquí..."
-  />
-  <JInput 
-    type="datetime-local"
-    placeholder="Escribe fecha y hora aquí..."
-  />
-  <JInput 
-    type="email"
-    placeholder="Escribe correo aquí..."
-  />
+  </JContainerForm>
 
 
-
-  <JModeToggle />
 
 
 

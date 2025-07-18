@@ -28,23 +28,29 @@ Creation Date: 2025-01-04
 ===============================================
 */
 
-import { Component, Input } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgClass, CommonModule } from '@angular/common';
+import { Component, forwardRef, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'JRangeInput',
-  imports: [FormsModule, ReactiveFormsModule, NgClass, LucideAngularModule, CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './range-input.component.html',
-  styleUrl: './range-input.component.css'
+  styleUrls: ['./range-input.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => JRangeInputComponent),
+      multi: true
+    }
+  ]
 })
 export class JRangeInputComponent {
-
+  
   @Input() id?: string;
   @Input() name?: string;
   @Input() placeholder: string = '';
-
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
   @Input() classes: string = '';
@@ -53,7 +59,6 @@ export class JRangeInputComponent {
   @Input() min: number = 0;
   @Input() max: number = 100;
   @Input() step: number = 1;
-  
   @Input() isLabel: boolean = false;
   @Input() simbol: string = '';
   
@@ -77,32 +82,39 @@ export class JRangeInputComponent {
     };
   }
 
-  // ControlValueAccessor
+  // ControlValueAccessor methods
   onChange: any = () => { };
   onTouched: any = () => { };
 
-  /**
-   * Writes a value to the component.
-   * @param event 
-   */
+  // Writes a value to the component
+  writeValue(value: any): void {
+    if (value !== undefined) {
+      this.innerValue = value;
+    }
+  }
+
+  // Registers a function to call when the value changes
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  // Registers a function to call when the control is touched
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  // Handles input changes
   onInput(event: Event): void {
-    const target = event.target as HTMLInputElement | HTMLTextAreaElement;
+    const target = event.target as HTMLInputElement;
     this.value = target.value;
     this.onChange(this.value);
     this.onTouched();
   }
 
-
-
-  /**
-   * Clears the input value and resets the component state.
-   * This method is typically used when a clear button is clicked.
-   */
+  // Clears the input
   clearInput(): void {
     this.value = '';
     this.onChange('');
     this.onTouched();
   }
-
-
 }

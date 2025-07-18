@@ -86,12 +86,12 @@ interface GeneratedColors {
 }
 
 @Component({
-  selector: 'lib-theme-generator',
+  selector: 'JThemeGenerator',
   imports: [LucideAngularModule, JInputComponent, JRangeInputComponent, JButtonComponent, FormsModule, JLabelComponent, JContainerFormComponent],
   templateUrl: './theme-generator.component.html',
   styleUrl: './theme-generator.component.css'
 })
-export class ThemeGeneratorComponent {
+export class JThemeGeneratorComponent {
 
   // Color picker state
   baseColor: string = '#415884';
